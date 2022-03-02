@@ -42,7 +42,7 @@ conn.sync({ force: false}).then(() => {
     //       await Country.bulkCreate(allCountries)
     //       return allCountries
     // }catch(e) {
-    //   console.log(e)
+    //   console.log('Catch an error: ', e)
     // }
     });
-  });
+});
