@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .paginado {
+    font-family:Arial;
+    font-weight:bold;
+    font-size:13px;
+  }
+  .li {
+    display:inline;
+       padding-left:3px;
+       padding-right:3px;
+      
+    
+  }
+  .paging:hover {
+    background-color: transparent;
+  }
+  .paginado button {
+    display: inline;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    border: black solid 2px;
+    border-radius: 5px;
+    background-color: rgba(75, 71, 71, 0.582);
+    color:  rgb(240, 255, 35);
+    font-weight: bold;
+  }

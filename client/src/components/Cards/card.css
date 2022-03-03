@@ -1,0 +1,37 @@
+.container-cards__img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    box-shadow: 0 2px 1px rgba(231, 52, 52, 0.411), 0 4px 2px rgba(243, 228, 19, 0.575),
+      0 8px 4px rgba(230, 226, 39, 0.637), 0 16px 8px rgba(0, 0, 0, 0.452),
+      0 32px 16px rgba(20, 18, 18, 0.747);
+    transition: 0.2s ease-out;
+    border-radius: 7%  7% 3% 3%;
+    padding: 1em 4em;
+  }
+  
+  .container-cards__img:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.74);
+    transform: translate3d(0, -4px, 0);
+  }
+  
+
+.titleTemps {
+  font-size: 18px;
+  color: rgb(16, 2, 66);
+  text-decoration: 'none';
+  
+}
+.breed {
+  text-decoration: 'none';
+  font-size: 20px;
+  color: rgb(25, 9, 83);
+  font-weight: 20px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  text-align: center;
+  margin-top: 7px;
+  height: 30px;
+  width: 200px;
+  z-index: 1;
+  text-shadow: 2px 2px 3px rgba(58, 6, 42, 0.76);
+}

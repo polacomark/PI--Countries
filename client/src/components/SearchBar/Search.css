@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cont {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    right: 80px;   
+    
+}
+
+.cont input {
+    width: 70%;
+    padding: 10px;
+    
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+
+    color: rgb(232, 255, 28);
+    background-color: rgba(133, 122, 122, 0.507);
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.cont button {
+    width: 30%;
+
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+
+    color: rgb(232, 255, 28);
+    background-color: rgba(15, 15, 15, 0.507);
+    border: rgb(19, 18, 18) solid 2px;
+    border-radius: 5px;
+}
+
+.cont button:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgba(232, 255, 28, 0.507);
+
+    font-weight: bold;
+}

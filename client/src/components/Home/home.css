@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+.all{
+  height: 1380px;
+
+  
+  }
+
+.home {
+  width:  100%;
+  height: 625px;
+ background-size: 100% auto;
+ 
+ display: flex;
+ flex-direction: column;
+}
+
+.busqueda {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+
+  display: flex;    
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+
+  width: 890px;
+  height: 290px;
+  padding: 10px;    
+}
+/* .filtros{
+  position: absolute;
+  top: 100px;
+  right: 190px;
+
+  display: flex;    
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+
+  width: 890px;
+  height: 290px;
+  padding: 10px;    
+} */
+
+.bt {
+  width: 300px;
+ 
+  margin: 15px;
+  padding: 10px;   
+  border: black solid 2px;
+  border-radius: 5px;
+
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+
+  color: rgb(232, 255, 28);
+  background-color: rgba(0, 0, 0, 0.623);
+}
+
+.bt:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgba(232, 255, 28, 0.507);
+
+  font-weight: bold;
+}
+
+.home select{
+  width: 31%;
+  padding: 10px;
+  border-radius: 5px;
+
+  font-family: 'Indie Flower', cursive;
+
+  color: rgb(232, 255, 28);
+  background-color: rgba(0, 0, 0, 0.507);
+  border: black solid 2px;
+  border-radius: 5px;
+}
+
+.lala{
+  display: flex;
+  flex-direction: column;    
+  align-items: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: auto;
+  grid-gap: 40px;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  justify-content: center;
+  margin-top: 90px;
+  margin: right;
+
+  position: relative;
+}
+
+.paginado {
+  position: absolute;
+ 
+  display: flex;
+  left: 200px;
+  bottom: -60px;
+  text-decoration: uppercase;
+}
+
+

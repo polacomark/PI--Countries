@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 import {postActivity, getAllCountries} from '../../actions/index';
 import {useDispatch, useSelector } from'react-redux';
+import './Create.css'
+import Navbar from "../NavBar/NavBar";
 
 export function validate(activity){
     let errors={};
@@ -11,11 +13,14 @@ export function validate(activity){
     if(!activity.difficulty){
         errors.difficulty='ingrese un nivel de difucultad'
     }
-    if(!activity.duration >= 1){
-        errors.duration='ingrese una duracion mayor o igual a 1 hora'
+    if(activity.duration < 1){
+        errors.duration='ingrese una duracion mayor 1 hora'
     }
     if(!activity.season){
         errors.season='selecciones una termporada'
+    }
+    if(!activity.countries){
+        errors.countries='seleccione los paises'
     }
     return errors
 }
@@ -49,8 +54,8 @@ export default function CreateActivity(){
     }
     function handleSubmit (e){
         e.preventDefault()
-        //let errors = Objet.keys(validate(activity))
-        if(!errors.length){
+        let errors = Object.keys(validate(activity))
+        if(!errors.length !==0){
             dispatch(postActivity(activity))
             setActivity({
                 name:'',
@@ -85,32 +90,36 @@ export default function CreateActivity(){
     return(
         <div>
             <div>
-                <div>
-                    <h1>Crear Actividad Turistica</h1>
+                <Navbar/>
+            </div>
+            <div className="createR">
+                <div className="allF">
                     <p> En esta seccion podra agregar una nueva actividad a su lista de paises</p>
+                    <h1>Crear Actividad Turistica</h1>
                 </div>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                <fieldset>
+                <div className="formulario">
+                <form  onSubmit={(e) => handleSubmit(e)}>
+              
                     <div>
-                    <div>
+                    <div className="line">
                         <label>Name:</label>
                     </div>
                     <input name='name'
                     id='name'
                     type='text'
                     value={activity.name}
-                    placeholder='Activity name'
+                    placeholder='surf, safari, sky, diving, camping, montain'
                     onChange={handleChange}
                     required>
-                    </input>
+                    </input>  
                     {errors.name &&(
-                        <p>
+                        <p className="error">
                             {errors.name}
                         </p>
                     )}
                     </div>
                     <div>
-                    <div>
+                    <div className="line">
                         <label>Difficulty:</label>
                     </div>
                     <select 
@@ -128,14 +137,14 @@ export default function CreateActivity(){
                         <option value='5'>5</option>
                     </select>
                     {errors.difficulty &&(
-                        <p>
+                        <p className="error">
                             {errors.difficulty}
                         </p>
                     )}
                     </div>
                     
                     <div>
-                    <div>
+                    <div className="line">
                         <label>Duration:</label>
                     </div>
                     <input name='duration'
@@ -146,14 +155,14 @@ export default function CreateActivity(){
                     onChange={handleChange}>
                     </input>
                     {errors.duration &&(
-                        <p>
+                        <p className="error">
                             {errors.duration}
                         </p>
                     )}
                     </div>
 
                     <div>
-                    <div>
+                    <div className="line">
                         <label>Season:</label>
                     </div>
                     <select name='season'
@@ -168,14 +177,14 @@ export default function CreateActivity(){
                         <option value='Winter'>Winter</option>  {/* invierno */}
                     </select>
                     {errors.season &&(
-                        <p>
+                        <p className="error">
                             {errors.season}
                         </p>
                     )}
                        </div> 
 
                       <div>
-                          <div>
+                          <div className="line">
                            <label>Countries:</label>
                           </div>
                           <select 
@@ -186,12 +195,17 @@ export default function CreateActivity(){
                           {
                               countries.map((c)=>(
                                   
-                                      <option value={c.id} key={c.id}>{c.name}</option>
+                                      <option value={c.id} key={c.name}>{c.name}</option>
 
                                   )
                                    )
                           }
                           </select>
+                          {/* {errors.countries &&(
+                        <p>
+                            {errors.countries}
+                        </p>
+                         )} */}
                           </div>
                    <ul>
                        {activity.countries.map((c)=>(
@@ -199,26 +213,20 @@ export default function CreateActivity(){
                             <button  onClick={() => handleDelete(c)}>X</button>
                            </li>
                        ))}
-                      {/* {activity.countries.map((e, id) => {
-                          return(
-                            <React.Fragment key={id}>
-                                <div>{e}
-
-                            <button  onClick={() => handleDelete(e)}>X</button>
-                                </div>
-                            </React.Fragment>
-                          )
-                          
-                            })} */}
+                     
                       </ul>  
                         
+                   {activity.name&&activity.difficulty&&activity.duration&&activity.season ?
+                    <button className="bts" type='submit' >Create Activity</button>:null}
+                    <div>
+                        <Link to='/home'>
+                        <button className="bts">Back</button>
+                        </Link>
+                    </div>
                    
-                    <button type='submit'>Create Activity</button>
-                    <Link to='/home'>
-                            <button >Back</button>
-                        </Link> 
-                        </fieldset>                   
+                                         
                 </form>
+                </div>
             </div>
         </div>
     )

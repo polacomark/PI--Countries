@@ -14,7 +14,7 @@ export default function CardsCountries({allCountries}){
                 flags={country.flags}
                 name={country.name}
                 continents={country.continents}
-                population={country.population} 
+                population={country.population}
                 />
                 )}
         </section>

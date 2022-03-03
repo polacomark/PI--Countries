@@ -15,10 +15,10 @@ export function getAllCountries(){
     }
 };
 
+
 export function getCountriesName(name){
     return async function (dispatch){
         try{
-            //console.log(`http://localhost:3001/countries?name=${name}`)
             const json = await axios.get(`http://localhost:3001/countries?name=${name}`);
             return dispatch({
                 type: 'GET_COUNTRIES_NAME',
@@ -71,18 +71,14 @@ export function filterContinents(payload){
      payload
  }
 };
+
 export function filterActivities(payload){
     return{
         type: 'FILTER_ACTIVITIES',
         payload,
     }
 };
-export function filterBySeason(payload){
-    return{
-        type: 'FILTER_BY_SEASON',
-        payload,
-    }
-};
+
 export function orderCountries(payload){
     return{
         type: 'ORDER_COUNTRIES',

@@ -51,17 +51,7 @@ switch(action.type){
                 ...state,
                 filters: filteredActivity
             };
-
-        case 'FILTER_BY_SEASON':
-            const filteredActBySeason = action.payload === 'All'
-            ? state.allCountries
-            : state.allCountries.filter((c) => c.activities && c.activities.filter((a)=>
-            a.season === action.payload).length)
-            return {
-                ...state,
-                filters: filteredActBySeason
-            }
-            
+                  
         case 'ORDER_COUNTRIES':
            let sorts;
             if(action.payload === 'All') sorts=  state.allCountries;
@@ -89,16 +79,9 @@ switch(action.type){
                   return  b.population - a.population;
                 })      
             }
-            if(action.payload ==='Small'){
-                sorts= state.filters.sort((a,b)=>{
-                    return a.area -b.area;
-                })
-            }
-            if(action.payload ==='Big'){
-                sorts= state.filters.sort((a,b)=>{
-                    return b.area - a.area;
-                })
-            }
+            
+           
+            
             
             return {
                 ...state,
