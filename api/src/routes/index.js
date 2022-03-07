@@ -1,22 +1,14 @@
 const { Router } = require('express');
 const axios = require('axios');
-//const fetch = require('node-fetch');
 //const {Op} = require('sequelize');
 const { Country, Activity }= require('../db');
 // Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+
 const cors = require("cors");
 const router = Router();
 router.use (cors({origin:"http://localhost:3000", credentials: true}));
 
-// const Countries = require ('./countries.js');
-// const Activities = require ('./activities.js');
-
 // Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-// router.use('./countries', Countries);
-// router.use('./activities', Activities)
-
 
 const getApiInfo = async () => {
 	const { data } = await axios('https://restcountries.com/v3/all');
@@ -61,24 +53,18 @@ const getDbActivity = async () => {
 	});
 };
 
-// router.get('/activity', async (req, res) => {
-// 	const activities = await getDbActivity();
-// 	const { name } = req.query;
-// 	res.status(200).send(activities);
-// });
-
+//-----busco por name-----------
 router.get('/countries', async (req, res) => {
 	// /countries?name=argentina
 	const { name } = req.query;
 	//countries = await getApiInfo();
 	let countries;
 	const countryDB = await Country.count();
-	countries =
-		countryDB === 0
-			? await getApiInfo() // asi que si la db esta bacia llamo a la api
-			: await getDb(); // si no saco de la bd
+	countries = countryDB === 0
+			? await getApiInfo() // si la db esta bacia llamo a la api
+			: await getDb(); // si no lo traigo de la bd
 	if (name) {
-		console.log('este es el name', name);
+		console.log('es el pais', name);
 		const byName = countries.filter((n) =>
 			n.name.toLowerCase().includes(name.toLowerCase())
 		);
@@ -89,118 +75,7 @@ router.get('/countries', async (req, res) => {
 		res.status(200).send(countries);
 	}
 });
-
-// router.get('/countries/:id', async function (req, res) {
-// 	const id = req.params.id.toUpperCase();
-// 	const allCountries = await getDb();
-// 	if (id) {
-// 		const idCountries = allCountries.filter((i) => i.id === id);
-// 		idCountries.length
-// 			? res.status(200).send(idCountries)
-// 			: res.status(404).send('id no valido');
-// 	}
-// });
-// router.get("/countries", async(req, res)=>{
-//     const country = await Country.findAll()
-//     Promise.all(country)
-//     .then(data => res.json(data))
-//   })
-
- 
-// router.get("/countries", async(req, res) =>{
-//     try{
-    //     const { name }=req.query;
-    //     if(req.query.name){
-    //         const country = await Country.findAll({
-    //             where:{ name: name},
-               
-    //             include:Activity
-    //         }) 
-    //         console.log(name)
-    //         res.json(country || "no se encontro el pais")
-        
-    // }else{
-        // const {data} = await axios.get('https://restcountries.com/v3/all');
-        // const apiUrl = await data.map((c)=>{
-        //     return{
-        //         id: d.cca3,
-        //         name: d.name.common,
-        //         flags: d.flags[0],
-        //         continents: d.continents[0],
-        //         capital: d.capital ? d.capital[0] : '---',
-        //         subregion: d.subregion ? d.subregion[0]: '---',
-        //         area: d.area,
-        //         population: d.population
-        //     }
-        // });
-        // const resultado = await Country.bulkCreate(apiUrl)
-        // return resultado;
-//             const respuesta = await axios.get('https://restcountries.com/v3/all');
-//             const data = await respuesta.data;
-//             const countryUrl = data.map(async (d)=>{
-//                 const countries = await Country.findOrCreate({
-//                     where:{
-//                             id: d.cca3,
-//                             name: d.name.common,
-//                             flags: d.flags[0],
-//                             continents: d.continents[0],
-//                             capital: d.capital ? d.capital[0] : '---',
-//                             subregion: d.subregion ? d.subregion[0]: '---',
-//                             area: d.area,
-//                             population: d.population
-
-//                     }})
-//             });
-//             Promise.all(countryUrl)
-//             .then(async ()=>{
-//                 const allCountries = await Country.findAll();
-//                 return allCountries;
-//             })
-//             .then((data)=>res.json(data))
-//         }
-//         catch(error){
-//             res.send("No se encontro los paises", error)
-//         }
-        
-// });
-
-// router.get('/countries', async(req, res, next)=>{
-// try{
-//     const { name }=req.query;
-//     let countname;
-//     if(req.query.name){
-//         countname = await Country.findAll({
-//             where:{
-//                 name: {
-//                     [Op.iLike]:`%${name}%`
-                    
-//                 }},
-//             include: Activity
-//         })
-//     }else{
-//         countries = await Country.findAll({
-//             include:Activity,
-//         })
-//     }
-//     return res.send(countname)
-
-// }catch(e){
-//  next(e)
-// }
-// });
-
-//--------------busqueda por id ----------
-// router.get('/countries/:id', async function (req, res) {
-// 	const id = req.params.id.toUpperCase();
-// 	const allCountries = await getDb();
-// 	if (id) {
-// 		const idCountries = allCountries.filter((i) => i.id === id);
-// 		idCountries.length
-// 			? res.status(200).send(idCountries)
-// 			: res.status(404).send('id no valido');
-// 	}
-// });
-
+//-----------busco por id ---------
 router.get('/countries/:id', async(req, res)=>{
     const {id} = req.params;  
     try{ 
@@ -216,19 +91,7 @@ router.get('/countries/:id', async(req, res)=>{
     }
 });
 // //---------------------------------------------
-// router.get('/activity', async(req, res, next)=>{
-//  try{
-//      const actividad = await Activity.findall({
-//         //where:{name: name}, 
-//          include: Country
-//      }
-//      )
-//      return actividad
 
-//  }catch(e){
-//     res.send('no se encontro la actividad')
-//  }
-// });
 //------------post para crear las actividades -------
 router.post('/activity', async(req, res)=>{
     const {name, difficulty, duration, season, countries} = req.body;
@@ -268,17 +131,6 @@ router.get('/', async(req,res) =>{
     })
     res.status(200).json(activitiesCreated)
 })
-// router.get('/activitybyall', async(req,res) =>{
-//     const {name}=req.query;
 
-//         const activity= await Activity.findAll({
-//             where:{name: name},
-//             include: Country
-//         })
-//         Promise.all(activity)
-//    .then(data => 
-//     res.json(data)
-//    )
-// })
 
 module.exports = router;

@@ -201,11 +201,7 @@ export default function CreateActivity(){
                                    )
                           }
                           </select>
-                          {/* {errors.countries &&(
-                        <p>
-                            {errors.countries}
-                        </p>
-                         )} */}
+                        
                           </div>
                    <ul>
                        {activity.countries.map((c)=>(

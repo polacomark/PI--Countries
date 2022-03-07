@@ -55,7 +55,7 @@ switch(action.type){
         case 'ORDER_COUNTRIES':
            let sorts;
             if(action.payload === 'All') sorts=  state.allCountries;
-            if(action.payload === 'AZ'){  //alpha
+            if(action.payload === 'AZ'){  
                  sorts = state.filters.sort((a,b) => {
                     if(a.name > b.name) return 1;
                     if(a.name < b.name) return -1;
@@ -78,10 +78,7 @@ switch(action.type){
                 sorts = state.filters.sort((a,b) => {
                   return  b.population - a.population;
                 })      
-            }
-            
-           
-            
+            } 
             
             return {
                 ...state,

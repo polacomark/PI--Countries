@@ -20,7 +20,7 @@
   .text{
     margin: 80px;    
     color: rgb(232, 255, 28);    
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.884);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.781);
    
     -webkit-transform: rotate(-8deg); 
     -moz-transform: rotate(-8deg);

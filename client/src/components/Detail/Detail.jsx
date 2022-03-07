@@ -35,14 +35,14 @@ export default function Detail(){
                         {
                             detail.activities && 
                             detail.activities?.map((a) => (
-                                <p key={a.id}>
-                                    <div>
+                                    <div key={a.id}>
+                                <p>
                                 <li>Name: {a.name}</li>
                                 <li>Season: {a.season} </li>
                                 <li>Duration:  {' '} {a.duration} </li>
                                 <li>Difficulty: {a.difficulty} </li>
-                                </div>
                                 </p>
+                                </div>
                             ))}
                         
                     </div>

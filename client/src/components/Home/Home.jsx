@@ -22,7 +22,6 @@ export default function Home(){
     const dispatch = useDispatch();
     const filters = useSelector((state)=>state.filters)
     
-    
 
 //paginado
 const [order, setOrder] = useState('')
@@ -58,12 +57,6 @@ const paginado=(pgNumber)=>{
     setOrder(e.target.value)
 }
 
-//por temporada
-// function handlefilterSeason(e){
-//     e.preventDefault()
-//     dispatch(filterBySeason(e.target.value))
-//     setOrder(e.target.value)   
-//}
 //ordenamiento
 function handlefilterOrder(e){
     e.preventDefault()
@@ -82,7 +75,7 @@ function handlefilterOrder(e){
              <Searchbar/>
                     </div>
              <div className='lala'>
-             <button className='bt' onClick={(e)=>handleClick(e)}>Refresh!</button>
+             <button className='bt' onClick={handleClick}>Refresh!</button>
                 <div className='filtros'>
                 <select onChange={handlefiltercontinent}>
                 <option value='All'>Filters Continents</option>

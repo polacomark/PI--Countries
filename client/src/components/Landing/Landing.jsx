@@ -7,7 +7,7 @@ export default function Landing(){
         <div className="wpLanding">
             <div>
             <Link className="btb" to='/home'>
-                <button clasName='btLanding'>
+                <button className='btLanding'>
                     <div  className="text">
                         <h1>¡¡WELCOME!!</h1>
                         <h2>PI COUNTRIES HENRY</h2>
